@@ -1,0 +1,37 @@
+Task 2: Basic Analysis
+
+-- Que. A. Find the total and the average sales (display total_sales and avg_sales) 
+-- Total average sales
+select sum(Sales)
+from market_fact;
+
+-- Average sales
+select avg(Sales)
+from market_fact;
+
+-- Que. B. Display the number of customers in each region in decreasing order of no_of_customers. The result should contain columns Region, no_of_customers
+select Region, count(*) as no_of_customer
+from cust_dimen
+where Region = 'Atlantic' or Region = 'Northwest Territories' or Region = 'Nunavut' or Region = 'Ontario' or Region = 'Prarie' or Region = 'Quebec' or Region = 'West' or Region = 'Yukon'
+group by Region
+order by no_of_customer desc;
+
+-- Que. C. Find the region having maximum customers (display the region name and max(no_of_customers)
+select Region, count(*) as no_of_customer
+from cust_dimen
+group by Region
+order by no_of_customer desc
+limit 1;
+
+-- Que. D. Find the number and id of products sold in decreasing order of products sold (display product id, no_of_products sold)
+select prod_id, sum(order_quantity) as no_of_products_sold
+from market_fact
+group by Prod_id, Order_Quantity
+order by Order_Quantity desc;
+
+-- Que. E. Find all the customers from Atlantic region who have ever purchased ‘TABLES’ and the number of tables purchased (display the customer name, no_of_tables purchased)
+
+select Customer_Name, sum(Order_Quantity) as no_of_tables_purchased
+from cust_dimen inner join market_fact on cust_dimen.Cust_id = market_fact.Cust_id
+where Region = 'Atlantic' and Prod_id = 'Prod_11'
+group by Customer_Name, Order_Quantity;
