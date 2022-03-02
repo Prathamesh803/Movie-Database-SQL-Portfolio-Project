@@ -1,5 +1,16 @@
 SQL Assignment Instruction File
 
+Task : Analysis
 
+Write the SQL queries for the following:
 
-
+A. Find the total and the average sales (display total_sales and avg_sales)
+B. Display the number of customers in each region in decreasing order of
+no_of_customers. The result should contain columns Region, no_of_customers
+C. Find the region having maximum customers (display the region name and
+max(no_of_customers)
+D. Find the number and id of products sold in decreasing order of products sold (display
+product id, no_of_products sold)
+E. Find all the customers from Atlantic region who have ever purchased ‘TABLES’ and
+the number of tables purchased (display the customer name, no_of_tables
+purchased) 
